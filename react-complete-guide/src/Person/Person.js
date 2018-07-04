@@ -1,0 +1,18 @@
+import React from 'react';
+import './Person.css'
+import Radium from 'radium';
+
+const person = (props) => {
+    //return <p>I'm a Person and I'm { Math.floor(Math.random() * 20) } years old!</p>
+    //return <p>I'm { props.name } and I'm { props.age } years old!</p>
+
+    return (
+        <div className="Person">
+            <p onClick={ props.click }>I'm { props.name } and I'm { props.age } years old!</p>
+            <p>{ props.children }</p>
+            <input type="text" onChange={props.change} value={props.name} />
+        </div>
+    )
+}
+
+export default Radium(person);
