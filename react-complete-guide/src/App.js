@@ -14,34 +14,6 @@ class App extends Component {
     showPersons: false
   }
 
-
-
-
-  someprop = 'abcd'
-
-  // switchNameHandler = (newName) => {
-  //   //console.log('Was clicked');
-  //   // DON'T DO THIS: this.state.persons[0].name = 'Bish';
-
-  //   // this.setState({
-  //   //   persons: [
-  //   //     { name: 'Bish', age: 25 },
-  //   //     { name: 'Srikant', age: 16 },
-  //   //     { name: 'Jaya', age: 19 }
-  //   //   ]
-  //   // })
-
-  //   this.setState({
-  //     persons: [
-  //       { name: newName, age: 25 },
-  //       { name: 'Srikant', age: 16 },
-  //       { name: 'Jaya', age: 19 }
-  //     ]
-  //   })
-
-  //   this.someprop = 'changed'
-  // }
-
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
@@ -58,14 +30,6 @@ class App extends Component {
     persons[personIndex] = person;
 
     this.setState({ persons: persons });
-
-    // this.setState({
-    //   persons: [
-    //     { name: 'Bishnu', age: 25 },
-    //     { name: event.target.value, age: 16 },
-    //     { name: 'Jaya', age: 19 }
-    //   ]
-    // })
   }
 
   togglePersonsHandler = () => {
@@ -99,24 +63,6 @@ class App extends Component {
 
     let persons = null;
     if (this.state.showPersons) {
-      // persons = (
-      //   <div>
-      //     <Person
-      //     name={this.state.persons[0].name}
-      //     age={this.state.persons[0].age} />
-
-      //     <Person
-      //     name={this.state.persons[1].name}
-      //     age={this.state.persons[1].age}
-      //     // click={this.switchNameHandler.bind(this, 'Bish!')} 
-      //     change={this.nameChangedHandler} />
-
-      //     <Person
-      //     name={this.state.persons[2].name}
-      //     age={this.state.persons[2].age} >I like cakes.</Person>
-      //   </div>
-      // )
-
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
