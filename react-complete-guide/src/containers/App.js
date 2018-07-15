@@ -20,6 +20,14 @@ class App extends Component {
     }
     
 
+    componentWillMount(){
+        console.log('[App.js] Inside componentWillMount()');
+    }
+
+    componentDidMount(){
+        console.log('[App.js] Inside componentDidMount()');
+    }
+
     
     
     // state = {
@@ -64,6 +72,8 @@ class App extends Component {
     }
 
     render() {
+        console.log('[App.js] Inside render()');
+
         let persons = null;
         if (this.state.showPersons) {
             persons = <Persons
