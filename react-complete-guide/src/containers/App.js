@@ -4,15 +4,33 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
-    state = {
-        persons: [
-            { id: 'sfdsf', name: 'Bishnu', age: 25 },
-            { id: 'sfdsff', name: 'Srikant', age: 16 },
-            { id: 'sfdsfd', name: 'Jaya', age: 18 }
-        ],
-        otherState: 'some other value',
-        showPersons: false
+    constructor(props){
+        super(props);
+        console.log('[App.js] Inside Constructor', props);
+
+        this.state = {
+            persons: [
+                { id: 'sfdsf', name: 'Bishnu', age: 25 },
+                { id: 'sfdsff', name: 'Srikant', age: 16 },
+                { id: 'sfdsfd', name: 'Jaya', age: 18 }
+            ],
+            otherState: 'some other value',
+            showPersons: false
+        }
     }
+    
+
+    
+    
+    // state = {
+    //     persons: [
+    //         { id: 'sfdsf', name: 'Bishnu', age: 25 },
+    //         { id: 'sfdsff', name: 'Srikant', age: 16 },
+    //         { id: 'sfdsfd', name: 'Jaya', age: 18 }
+    //     ],
+    //     otherState: 'some other value',
+    //     showPersons: false
+    // }
 
     nameChangedHandler = (event, id) => {
         const personIndex = this.state.persons.findIndex(p => {
