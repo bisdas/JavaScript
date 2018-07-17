@@ -3,6 +3,7 @@ import classes from './Person.css'
 import WithClass from '../../../hoc/WithClass';
 import Aux from '../../../hoc/Auxiliary';
 import withClassWrap from '../../../hoc/withClassWrap';
+import PropTypes from 'prop-types';
 
 class Person extends Component {
     constructor(props) {
@@ -35,6 +36,13 @@ class Person extends Component {
         //     <input key="3" type="text" onChange={this.props.change} value={this.props.name} />
         // ]
     }
+}
+
+Person.propTypes = {
+    click: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    change: PropTypes.func
 }
 
 export default withClassWrap(Person, classes.Person);
