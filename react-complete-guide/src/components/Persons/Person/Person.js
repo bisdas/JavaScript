@@ -21,7 +21,10 @@ class Person extends Component {
         if (this.props.position === 0) {
             this.inputElement.current.focus();
         }
+    }
 
+    focus() {
+        this.inputElement.current.focus();
     }
 
     render() {
@@ -54,4 +57,4 @@ Person.propTypes = {
     change: PropTypes.func
 }
 
-export default withClassWrap(Person, classes.Person);
+export default Person;
