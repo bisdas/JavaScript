@@ -57,4 +57,4 @@ Person.propTypes = {
     change: PropTypes.func
 }
 
-export default Person;
+export default withClassWrap(Person, classes.Person);

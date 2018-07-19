@@ -35,7 +35,6 @@ class Persons extends PureComponent {
 
     componentDidUpdate() {
         console.log('[UPDATE Persons.js] Inside componentDidUpdate()');
-        this.lastPersonRef.current.focus();
     }
 
     render() {
@@ -45,7 +44,7 @@ class Persons extends PureComponent {
             return (
                 <Person
                     key={person.id}
-                    ref={this.lastPersonRef}
+                    forwardedRef={this.lastPersonRef}
                     position={index}
                     name={person.name}
                     age={person.age}
