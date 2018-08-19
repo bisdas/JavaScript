@@ -5,6 +5,7 @@ import axios from '../../axios'
 
 import './Blog.css';
 import Posts from './Posts/Posts';
+import NewPost from './NewPost/NewPost';
 
 class Blog extends Component {
     render() {
@@ -19,8 +20,13 @@ class Blog extends Component {
                     </nav>
                 </header>
 
+                {/*
                 <Route path="/" exact render={() => <h2>Home</h2>} />
                 <Route path="/" render={() => <h2>Home 2</h2>} />
+                */}
+
+                <Route path="/" exact component={Posts} />
+                <Route path="/new-post" exact component={NewPost} />
 
                 {/* <Posts /> */}
             </div>
