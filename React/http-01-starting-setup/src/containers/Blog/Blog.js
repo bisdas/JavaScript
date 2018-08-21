@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 
 import './Blog.css';
 import Posts from './Posts/Posts';
@@ -28,12 +28,14 @@ class Blog extends Component {
                                  pathname: this.props.match.url + '/new-post'   --- this generates relative path
                                 */
                             }
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to={{
+                            <li><NavLink
+                                to="/"
+                                exact>Home</NavLink></li>
+                            <li><NavLink to={{
                                 pathname: '/new-post',
                                 hash: '#submit',
-                                search: '?quick-submit=true'
-                            }}>New Post</Link></li>
+                                search: '?quick-submit=true',
+                            }}>New Post</NavLink></li>
                         </ul>
                     </nav>
                 </header>
