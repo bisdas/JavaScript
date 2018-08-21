@@ -15,6 +15,19 @@ class Blog extends Component {
                             {/* <li><a href="/">Home</a></li>
                             <li><a href="/new-post">New Post</a></li> */}
 
+                            {
+                                /*
+                                 absolute path: '/new-post'; writing link to like this always get appended to 
+                                 the root domain.
+
+                                 to achienve the links not to start at the root domain, rather to append to the 
+                                 url, write like this: this.props.match.url + '/new-post'
+
+                                 example: 
+                                 pathname: '/new-post'   --- this always generates absolute path
+                                 pathname: this.props.match.url + '/new-post'   --- this generates relative path
+                                */
+                            }
                             <li><Link to="/">Home</Link></li>
                             <li><Link to={{
                                 pathname: '/new-post',
