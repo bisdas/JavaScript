@@ -4,7 +4,6 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import './Blog.css';
 import Posts from './Posts/Posts';
 import NewPost from './NewPost/NewPost';
-import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
     render() {
@@ -29,19 +28,23 @@ class Blog extends Component {
                                  pathname: this.props.match.url + '/new-post'   --- this generates relative path
                                 */
                             }
-                            <li><NavLink
-                                to="/"
-                                exact
-                                activeClassName="my-active"
-                                activeStyle={{
-                                    color: '#fa923f',
-                                    textDecoration: 'underline'
-                                }}>Home</NavLink></li>
-                            <li><NavLink to={{
-                                pathname: '/new-post',
-                                hash: '#submit',
-                                search: '?quick-submit=true',
-                            }}>New Post</NavLink></li>
+                            <li>
+                                <NavLink
+                                    to="/"
+                                    exact
+                                    activeClassName="my-active"
+                                    activeStyle={{
+                                        color: '#fa923f',
+                                        textDecoration: 'underline'
+                                    }}>Posts</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to={{
+                                    pathname: '/new-post',
+                                    hash: '#submit',
+                                    search: '?quick-submit=true',
+                                }}>New Post</NavLink>
+                            </li>
                         </ul>
                     </nav>
                 </header>
@@ -51,10 +54,9 @@ class Blog extends Component {
                 <Route path="/" render={() => <h2>Home 2</h2>} />
                 */}
 
-                <Route path="/" exact component={Posts} />
                 <Switch>
                     <Route path="/new-post" component={NewPost} />
-                    <Route path="/:id" component={FullPost} />
+                    <Route path="/" component={Posts} />
                 </Switch>
             </div>
         );
