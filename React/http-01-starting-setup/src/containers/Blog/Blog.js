@@ -30,7 +30,12 @@ class Blog extends Component {
                             }
                             <li><NavLink
                                 to="/"
-                                exact>Home</NavLink></li>
+                                exact
+                                activeClassName="my-active"
+                                activeStyle={{
+                                    color: '#fa923f',
+                                    textDecoration: 'underline'
+                                }}>Home</NavLink></li>
                             <li><NavLink to={{
                                 pathname: '/new-post',
                                 hash: '#submit',
