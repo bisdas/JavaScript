@@ -1,0 +1,552 @@
+Javascript:
+
+JS is 
+    ->Object based
+    ->Functional
+    ->Event driven
+
+JS
+  ->brendan eich created in 10 days
+  ->created for web document manipulation
+1996-submitted to ECMA Committe
+  ->1997 - JS 1.0 ->ES 1.0
+  ->1999 ->ES 3.0
+  ->2007 ->ES 4.0
+  ->2008 ->Node.js based on ES 4.0,Angular js 1.0
+  ->2009 ->ES 5.0
+  ->2012 ->ES 6----->2015->ES 6/ECMA2015
+  ->2016 - ES 7
+  ->2017 - ES 8.....
+ 
+Node 8.x version supports ES 6
+
+JS
+Node + Browser supports:
+   ->Language fundamentals
+   ->functional programming and functions
+   ->Object based programming
+---------------------------------------------------
+Browser only supports:
+   ->DOM programming
+   ->AJAX Programming
+
+JS Work Flow:
+
+  ->load and go delivery model
+ Source Code
+     ->ENV ->Runtime
+
+OTHER Languages
+ code-compile-compiled code(assembly)-loaded on runtime->
+ allocate memory-cpu
+
+JS Runtime: 
+
+ ->Embeded JS Runtime/Engine
+	->Every Web Browser has its own runtime.
+ Chrome - v8
+ IE - Chakra
+ Firefox -Spider Monkey
+
+2008
+ ->google entered browser war
+ ->Best javascript engine
+    ->open sourced-v8 
+
+v8 implements ECMA Spec
+...........................................................
+
+Setup:
+
+>node
+>vscode
+
+js program:
+>REPL mode
+  >node
+>passing js file to node
+   >node index.js
+
+JS - Language fundamentals:
+ES 5 -> ES 6
+ ->Type system,variable declaration
+
+JS Dynamic typed pl.
+
+varaiable
+ var variablename=value/literals =>es 5
+ let variablename=literal => es 6
+   ->Replacement of "var"
+ const variablename=literal ->es 6
+
+this.variablename =literal = es 5 + es 6
+
+literals:
+string,number,boolean
+undefined
+NaN
+infinity
+function
+null
+object
+
+
+Boolean expressions:
+
+c,c++ -> 0 false,everthing true
+java->true,operator which gives boolean
+
+
+Operators:
+>Eq
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Functions:
+
+>Function declaration,Invoked
+ >ES 5 + ES 6
+>Function parameters,args,return
+
+>Function Expressions
+  Since function literal, can be assigned to a variable.
+
+>Function as param
+   >Async,Sync =>To be discussed as part of node.
+
+>Function as return=>to be discussed later
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Objects:Object based Programming
+
+oop vs obp:
+..........
+
+OOP:
+ ->based on some principles.
+OOPL:
+ -The language which implements oop principles,called oopl
+
+oop:
+->Abstraction
+   ->classes
+->Encapsulation
+   ->private,public,protected
+->Modularity
+   ->c++ file
+   ->dns 
+   ->namespace
+->Typing
+    ->polymorphim-overloading,overriding
+    ->Data types-Strong/static typing
+->Hierarchy
+    ->has-a-DI
+    ->IS-A -inheritance
+-----------------------------
+->Persistency
+  ->storage
+->Concurrency
+  ->Multithreading
+
+------------------------------------------------------------
+JS is not implementing "typing,encapsulation,is-a,classes"
+
+In JS "Every thing or most of thing Object".
+
+In JS "Code" itself object.
+
+............................................................
+
+index.js
+function add(a,b){
+ console.log(a,b)
+}
+<script src="index.js"></script>----->JS engine
+
+>node index.js
+ int main(char* filename){
+
+
+ }
+|
+Compilation-Parser
+   |
+  Parsed Tree-Character tree/string tree/asci tree
+
+eg:
+your code
+sayHello()
+function sayHello(){
+    console.log('Hello')
+}
+parsed code
+function sayHello(){
+    console.log('Hello')
+}
+sayHello()
+
+  
+Your code:
+greeter();
+let greeter = function () {
+    console.log('greeter');
+}
+After parsing
+
+let greeter;
+greeter();
+greeter = function () {
+    console.log('greeter');
+}
+This process is called "Hoisting"
+ ->moving variable declarations one level up
+
+Scope:
+ The life of variable
+
+->global scope
+->function scope
+    any thing inside function, will be accessible only within that function only.
+->block scope
+->public/object scope
+
+
+Hoisting and Block scope:
+
+Your code:
+
+function sayMyName(isActive) {
+    var name = 'ram';
+    if (isActive) {
+        var status = 'You are active'
+    }
+    console.log(status);
+}
+sayMyName();
+
+
+Parsed Code:
+
+function sayMyName(isActive) {
+    var name = 'ram';
+    var status;
+    if (isActive) {
+      status= 'You are active'
+    }
+    console.log(status);
+}
+sayMyName();
+
+ |
+Assembly code generation
+|
+
+
+
+Program
+ ->Collection of Instruction
+    ->Active Instruction
+	->Instruction on MainMemory(ram)
+		-->CPU
+    ->Passive Instruction
+ 	->Instruction not in mainMemory / Not accessibale by	
+	  CUP
+		
+|
+pointerVariable = { 
+ ////
+
+}
+window = { 
+ ////
+
+}
+process = { 
+ ////
+
+}
+
+
+pointerVariable = { 
+   sayHello:function(){}
+
+}
+
+In JS "Function itself Object"
+  ->Passive object
+  ->Callable Object
+  
+sayHello()->frame
+
+Function Object is transformed into:
+
+ >Stack Frame->Single Thread
+ >Domain Object/Active Object-Looks like C++/Java/C# Objects
+ >Queue Message->Async function
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Domain Objects:
+
+Object=> state + behaviour + identity
+
+state-data->instance variables
+behaviour->instance methods
+   ->this
+
+Create Object:
+
+>Constructor pattern
+   >es 5 function
+   >es 6 class
+>Literal Pattern
+ ->No external function/class to create object
+ ->JS engine uses in built template function to create literals(Object)
+
+-Object layout:Internal Structur of Object
+
+  Object in js is Data Structure called "Map"
+
+  Map
+    ->add,update,delete,iterate
+  "Object augmentation"
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Object Relationship: hierarchy
+>HAS-A 
+>IS-A-inheritance
+ >Object based inhiertance
+    ->object inheritance other objects
+ >Every Object by default has parent Object
+
+
+>Object destruring
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Node:
+
+What is Node?
+ Node.js® is a JavaScript runtime built on Chrome's V8  JavaScript engine.
+
+Why Node?How node is diffent from other Runtimes?
+
+ ->Node is runtime to build enterprise large scale "IO"
+   Applications.
+
+ ->Blocking and NonBlocking: program
+    	->Process
+  function->stack->stack frame->unit of execution
+
+  How much time a frame will take to complete?
+	->code
+
+  readFile->stack->sf-Running
+     ->Blocking IO: tHE IO frame blocks the current process.
+
+ Non-Blocking:
+    Async ==nonblocking
+
+
+Debugging:
+
+Node Runtime work flow:
+Every program must have main method where programs starts
+ -main call stack
+
+Async://Non-Blocking
+
+function->stack-> |
+    ->(function)delegate->C(libuv)->select a thread from thread pool->delegate to OS Kernal
+
+function->stack-> | 
+
+Two things you must have in code:
+
+1.function must be passed as parameter->callback function/async
+2.You need to bind delegator api
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Modularity:
+   How to break application into parts,connect each other.
+
+Loaders ,Linkers:
+C/C++ => files header files,
+java  ->folder->dns com.sg.product =>package
+javascript->?
+  ->script src="index.js"
+
+function main
+
+function calcuate
+
+function sum
+
+Use case 1: writing app inside <script>
+<script>
+        function sum(a, b) {
+            return a + b;
+        }
+
+        function calculate(a, b) {
+            return sum(a, b);
+        }
+
+        function main() {
+            var result = calculate(10, 10);
+            console.log(result)
+        }
+        main()
+    </script>
+
+Modularity Design patterns:
+1.monolithic -<script>
+2.Global Object/Name space design pattern
+3.AMD
+   ->How to link files
+         define  =>import,package 
+   ->How to share code
+	 require()->main file
+
+
+define ->syntax
+
+sum.js
+define([],function(){
+ //logic
+})
+
+calculate.js
+define(['./sum.js'],function(){})
+
+
+main.js
+define(['./calculate.js']
+
+Loaders:
+AMD ->Amd loaders
+      <script data-main="scripts/main" src="scripts/require.js"></script>
+
+
+CommonJS-CJS:
+ ->Next level of AMD
+Problems with amd
+ ->You need to encapuslate your code inside require,define
+function.
+
+commonjs: file linking and code sharing
+ ->require()
+ ->exports,module.exports
+
+cjs is implemented on node.js by default
+ -node has inbuilt cjs loader.
+
+Coding sharing:
+
+Two ways of code sharing.
+
+1.pack your code inside one sinlge literal object,and return
+ that object
+  {
+   you code
+ 
+  }
+return {}
+
+exports
+ ->It is just variable,proposed by cjs
+
+2.Without object
+   You can share your code as it is
+ if you share class, the class will be shared
+ if you share variable,the variable will be shared
+
+module.exports = code ->variable,function,class,anything
+..........................................................
+
+Package Manager:
+  ->It is tool used for managing projects
+eg:
+  java ->ant,maven,gradle
+  .net - nugate
+   ruby -gem
+etc........
+
+javascript
+ ->npm -node package manager
+ ->yarn
+ ->jspm
+
+npm:
+  tool is used install third party node modules into your project.
+
+Types of node modules:
+1.Custom module->we have seen
+2.In built modules->is distributed as part node
+3.Third party modules
+
+Node Project Structure:
+1.Every node project must have one file "package.json"
+  
+  package.json is config file for node project.
+
+2.creating package.json
+ >npm init
+
+
+3.node_modules
+   This is folder where all inbuilt + third party modules
+are kept
+
+
+
+3.Third party modules
+  Published by some one in rep servers->npmjs.com
+
+commands for getting party modules:
+1.npm install  <moduleName>  --options
+
+ npm install lodash
+
+--options
+Dev Depedencies => --save-dev
+   ->used only for develoment
+"devDependencies": {
+    "chai": "^4.1.2"
+  }
+Production dependencies => --save
+   "dependencies": {
+    "lodash": "^4.17.10"
+  }
+lodash ->
+
+>Global Modules:
+  ->tools and utilties
+ compilers,bundlers,webservers .........
+>npm install modulename -g
+
+>npm install -g browserify
+
+>browserify main.js -o bundle.js
+
+General Problems with global Modules:
+......................................
+
+
+Uninstalling modules
+>npm uninstall modulename --save or --save-dev or -g
+
+
+>Scripts-npm scripts:
+ Tasking running : automation
+
+ "build" : "browserify main.js -o bundle.js"
+
+task:
+ ->inbuilt task from node
+	->test  => npm taskName => npm test
+        ->start =>npm start
+ ->custom task
+          ->npm run <taskName>
+       "build" : "browserify main.js -o bundle.js"
+
+Webserver:
+
+  >lite-server
+  >npm install lite-server --save-dev
