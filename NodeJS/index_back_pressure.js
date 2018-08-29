@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 
-const readerStream = fs.createReadStream('./big.file', 'utf8');
+/*const readerStream = fs.createReadStream('./big.file', 'utf8');
 const writeStream = fs.createWriteStream('./bigfileCopy.txt');
 let data=''
 //read operation
@@ -19,3 +19,11 @@ writeStream.on('drain', function () {
 readerStream.on('end', function () {
     console.log('end is called');
 });
+*/
+
+const readable = fs.createReadStream('./big.file');
+const writable = fs.createWriteStream('./filecopy.txt');
+
+//short approach
+//all the data from readable goes into writable (filecopy.txt)
+readable.pipe(writable);
