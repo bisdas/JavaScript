@@ -1,4 +1,4 @@
-Javascript:
+﻿Javascript:
 
 JS is 
     ->Object based
@@ -550,3 +550,283 @@ Webserver:
 
   >lite-server
   >npm install lite-server --save-dev
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Node In built Modules:
+
+1.events
+
+2.fs
+3.http
+
+
+
+
+1.events - notification
+
+ Node is Non-blocking,event driven platform
+
+Event driven Programming:
+->Program-passive->Attached with another program
+   ->event-Program Active
+
+Event driven programming is designed with Observerable design pattern. 
+
+
+Creating Event driven Programming:
+
+Steps:
+
+1.create Owner Object
+    ->es 6 class,function
+2.Add Event facility to car object
+  const EventEmitter = require('events')
+
+EventEmitter Provides two major api
+
+1.on
+   take custom event alongwith subscriber/listerner
+ const button=document.getElementById('btn')
+ button.addEventListener('click',function(e){
+     //repaint
+     p.innerHTML = counter
+})
+
+ const car=new Car();
+ car.on('sold',function(){
+      //biz operation
+     updateInventory()
+ })
+2.emit
+   To trigger event
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+IO:
+ Node IO is nonblocking,event driven.
+ Node provides blocking IO as well
+
+    All objects that emit events are instances of the EventEmitter class.
+
+ Node Objects mostly inherits EventEmitter as Base Class.
+
+IO
+ -Input - Read
+ -output -Write
+
+Read
+write
+Read+write
+Read+transform+write
+R +t+w +r +tr+w
+
+
+Blocking IO
+  ->local fs only not network io.
+
+FS:
+  ->how to read file
+Blocking read file.
+Node provides a module "fs"
+
+fs module structure:
+
+
+class  FileSystem{
+
+    class ReadStream {}
+    class WriteStream {}
+    class Stats{}
+    class FsWatcher {}
+    close(){}
+    createReadStream(){}
+    createWriteStream(){}
+  ...
+}
+let fs =new FileSystem();
+fs.readFile()
+
+Blocking api ends with "Sync"
+
+NonBlocking:
+
+->Streaming
+  ->Packet ->Unit of measurement
+     -Before sending information to other machines,data
+  is broken,send "part by part" is called Packet
+  ->chunk- Unit of measurement 
+     -Node breaks the file(data) into smaller and smaller
+    send "chunk by chunk" - Streaming
+
+->NonStreaming
+  ->Loads the entire file content into memory,and delvery
+ -Recomm: dont use this api in network env.
+
+//All streamings are event driven
+
+
+Stream Structure:
+
+class Stream{
+ ...
+}
+class ReadableStream extends Stream{}
+class HttpRequest extends ReadableStream{}
+class WritableStream extends Stream{}
+
+
+ReadableStream:
+
+close
+
+ The 'close' event is emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed.
+
+data:
+The 'data' event is emitted whenever the stream is relinquishing ownership of a chunk of data to a consumer
+
+Readable Streams:
+HTTP responses, on the client
+HTTP requests, on the server
+fs read streams
+zlib streams
+crypto streams
+TCP sockets
+child process stdout and stderr
+process.stdin
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Write:
+
+>Blocking
+  fs.writeFileSync()
+>Nonblocking
+ ->Non Streaming
+      fs.writeFile()
+  >Streaming
+	fs.createWriteStream()
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Back Pressure:
+  If you coimbine read + write together.
+ if read is fast,write is slow.=>overflow.
+
+Node handles back pressure in simple:
+ buffer_good wstream.write()
+ if !buffer_good stream.pause()
+
+drain
+  stream.resume
+
+read.pipe(write);
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Transformations: Duplex - Read - transform - write
+
+const zlib = require('zlib');
+const fs = require('fs');
+
+//create compressor
+const gzip = zlib.createGzip();
+//create inputstream
+const inp = fs.createReadStream('./bigfile.txt');
+//create outputstream
+const out = fs.createWriteStream('CompressedBigFile.txt.gz');
+//read-compress-write
+inp.pipe(gzip).pipe(out);
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+HTTP:
+
+Protocal: Data transmission rules
+
+->Set of rules for transfering data 
+
+c:
+ftp:
+http:
+soap:
+smtp:
+
+rules is just program - c 
+ program = > variables + methods
+
+http-c
+  -request.c  - inputstream
+  -response.c - outputstream
+variables => headers
+methods  => get,post,delete,trace,debug,put,head....
+
+http is io channel
+
+Client                                  |       Server
+  |                                     |       |
+  |                                             |
+write                                   write   read
+ =================================================
+  *********************************************
+ =================================================  
+  |
+read(response)
+
+Web Developer
+ Java, C++,Php - Sync         Node-Async
+     |                          |
+   Api                          api                  
+    |                           |
+ http c                        libuv
+                                 |
+                                 http
+
+///////////////////////////////////////////////////////////
+http module - http
+
+const http =require('http')
+
+class Http{
+
+ class Agent {}
+ class ClientRequest {}
+ class ServerResponse {}
+ class Server{}
+ class IncommingMessage{}
+ createServer(){}
+ Options
+ .................
+
+}
+
+1.Basic server,simple response
+
+2.Response,json
+
+3.echo Server
+
+Problems with plain http module:
+
+1.MVC
+2.Routing
+   based on url /profiles
+   based on methods get,post,delete
+
+2001 - Express.js
+
+ Express is mininislit web frame which abstracts
+	routing,method mapping.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+http -express
+
+express:node module
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Promise:
+->Design pattern
+
+What is promise solving?
+ ->Callback hell -Async
+ ->nested functions
+
+ES 6 Promise
+
+ new Promise(s,f);
