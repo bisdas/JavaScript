@@ -1,6 +1,9 @@
 import * as React from 'react';
 
-export class App extends React.Component<{}, IState>{
+import * as IState from './IState';
+import { ITask } from './ITask';
+
+export class App extends React.Component<{}, IState.default>{
     constructor(props: {}) {
         super(props);
 
@@ -65,15 +68,4 @@ export class App extends React.Component<{}, IState>{
         const date = new Date();
         return date.getTime();
     }
-}
-
-interface IState {
-    currentTask: string;
-    tasks: Array<ITask>;
-}
-
-interface ITask {
-    id: number;
-    value: string;
-    completed: boolean;
 }
