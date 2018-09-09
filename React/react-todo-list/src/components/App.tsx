@@ -10,7 +10,7 @@ export class App extends React.Component<{}, IState>{
         }
     }
 
-    handleSubmit = (event: React.FormEvent) => {
+    public handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         console.log('handleSubmit was called');
         event.preventDefault();
 
@@ -23,7 +23,7 @@ export class App extends React.Component<{}, IState>{
         });
     }
 
-    renderTasks = () => {
+    public renderTasks = (): JSX.Element[] => {
         return this.state.tasks.map((task: string, index: number) => {
             return (
                 <div key={index}>{task}</div>
@@ -31,7 +31,7 @@ export class App extends React.Component<{}, IState>{
         });
     }
 
-    render() {
+    public render(): JSX.Element {
         console.log(this.state);
         return (
             <div>
