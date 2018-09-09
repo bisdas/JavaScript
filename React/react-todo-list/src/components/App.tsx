@@ -34,12 +34,23 @@ export class App extends React.Component<{}, IState.default>{
         this.setState({ tasks: filteredTasks });
     }
 
+    public toggleDone = (index: number) => {
+        let tasks: ITask[] = this.state.tasks.splice(index, 1);
+        tasks[0].completed = !tasks[0].completed;
+
+        debugger;
+
+        const currentTasks: ITask[] = [...this.state.tasks, ...tasks];
+        this.setState({ tasks: currentTasks });
+    }
+
     public renderTasks = (): JSX.Element[] => {
         return this.state.tasks.map((task: ITask, index: number) => {
             return (
                 <div key={task.id}>
                     <span>{task.value}</span>
                     <button onClick={() => this.deleteTask(task.id)}>Delete</button>
+                    <button onClick={() => this.toggleDone(index)}>Done</button>
                 </div>
             )
         });
