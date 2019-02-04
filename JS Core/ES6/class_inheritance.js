@@ -33,3 +33,7 @@ let bis = new Bis();
 //bis.sayHello();
 bis.sayHelloAgain();
 
+
+// prototype of inherited class
+console.log(bis.__proto__ === Person.prototype); // false
+console.log(bis.__proto__ === Bis.prototype); // true
