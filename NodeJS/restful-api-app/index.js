@@ -18,6 +18,10 @@ const server = http.createServer(function (request, response) {
     const path = parsedUrl.pathname;
     const trimmedPath = path.replace(/^\/+|\/+$/g, '');
 
+
+    // get the request method
+    const method = request.method.toLowerCase();
+    
     
     // send the response
     response.end('Hello World...!');
@@ -25,6 +29,7 @@ const server = http.createServer(function (request, response) {
 
     //log the request path
     console.log((new Date).toString(), ': Request received with path: ', trimmedPath);
+    console.log((new Date).toString(), ': Request method: ', method);
 });
 
 // the server should log whena request arrives
