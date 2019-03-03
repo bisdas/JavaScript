@@ -28,6 +28,9 @@ const server = http.createServer(function (request, response) {
     //get the querystring parameters
     const queryStringObject = parsedUrl.query;
     
+
+    //get the request headers
+    const headers = request.headers;
     
     // send the response
     response.end('Hello World...!');
@@ -37,6 +40,7 @@ const server = http.createServer(function (request, response) {
     console.log('Request path: ', trimmedPath);
     console.log('Request method: ', method);
     console.log('Request quertstring: ', queryStringObject);
+    console.log('Request headers: ', headers);
 });
 
 // the server should log whena request arrives
