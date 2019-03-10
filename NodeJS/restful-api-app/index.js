@@ -7,6 +7,7 @@
 const http = require('http'); // built in node module related to http operations
 const url = require('url'); // built in node module related to url 
 const StringDecoder = require('string_decoder').StringDecoder; // built in node module to decode strings
+const config = require('./config');
 
 // the server should respond to all requests with a string
 const server = http.createServer(function (request, response) {
@@ -71,6 +72,7 @@ const server = http.createServer(function (request, response) {
 
             const payloadString = JSON.stringify(payload);
 
+            response.setHeader("Content-Type", "application/json");
             response.writeHead(statusCode);
             response.end(payloadString);
 
@@ -93,7 +95,7 @@ server.on('request', function (request, response) {
 
 // the server should listen to port 3000
 server.listen(3000, function () {
-    console.log('Server listening on port: 3000');
+    console.log('Server listening on port: ' + config.port + ' in ' + config.envName + ' mode');
 });
 
 
