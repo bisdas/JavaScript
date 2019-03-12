@@ -1,23 +1,14 @@
 const fs = require('fs');
 
-const book = {
-    title: 'Ego is the Enemy',
-    author: 'Ryan Holiday'
-}
+const dataBuffer = fs.readFileSync('1-json.json')
+const dataJSONString = dataBuffer.toString()
+const dataObject = JSON.parse(dataJSONString)
 
+dataObject.name = 'Bishnu'
+dataObject.age = 28
 
-const bookJSON = JSON.stringify(book)
-//fs.writeFileSync("1-json.json", bookJSON);
-
-
-const dataBuffer = fs.readFileSync('1-json.json');
-console.log(dataBuffer);
-const dataJSON = dataBuffer.toString();
-const data = JSON.parse(dataJSON);
-console.log(data.title)
-
-
-
+console.log(dataObject)
+fs.writeFileSync('1-json.json', JSON.stringify( dataObject))
 
 
 /* ---------- Simple JSON stringifying and Parsing ----------*/
