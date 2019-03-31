@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+    <button>Click Me</button>
+</body>
+<script>
+        var button = document.querySelector('button');
+        var fn2 = function(){
+            console.log(this);
+            // this prints the properties of the button element (HTMLButtonElement)
+        }
+
+        var fn3 = () => {
+            console.log(this);
+            // this prints the properties of the global Window object.
+
+            //!! Important
+            // arrow function actually keeps its context. no matter where the function is called,
+            //an arrow function will always be in the Window context.
+        }
+
+        //button.addEventListener('click', fn2);
+        button.addEventListener('click', fn3);
+    </script>
+</html>
