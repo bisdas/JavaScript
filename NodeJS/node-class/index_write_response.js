@@ -1,5 +1,5 @@
 const http = require('http');
-const USERS = require('./mock-data/profiles');
+const USERS = require('../mock-data/profiles');
 
 //Sending JSON data
 const callback = function (req, res) {
